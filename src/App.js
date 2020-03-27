@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import SearchForm from "./components/SearchForm";
-import api from "./services/api";
 import Card from "./components/Card";
 import "./style.css";
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min";
+import apiService from "./services/apiService";
 
 class App extends Component {
     constructor(props) {
@@ -89,19 +89,19 @@ class App extends Component {
         this.searchMovies = this.searchMovies.bind(this);
     }
 
-    async searchMovies(entrada) {
-        const resp = await api.get('', {
-            params: {
-                apikey: 'e7bf29e9',
-                s: entrada,
-            }
-        }).then(response => response.data);
-
-        if(resp.Response){
-            this.setState({
-                filmes: resp.Search
+    searchMovies(entrada) {
+        apiService.ListaFilmes(entrada)
+            .then(response => {
+                console.log(response);
+                if(response.data.Response === 'True'){
+                    this.setState({
+                        filmes: response.data.Search
+                    })
+                }
+            })
+            .catch(error => {
+                console.log(error.response)
             });
-        }
     }
 
     render() {
