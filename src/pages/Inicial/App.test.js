@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 import { render } from '@testing-library/react';
 import App from './App';
-import Card from "./components/Card";
+import Card from "../../components/Card";
 
 /*
 test('renders learn react link', () => {

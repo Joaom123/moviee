@@ -1,16 +1,19 @@
 import React, {Component} from 'react';
-import SearchForm from "./components/SearchForm";
-import Card from "./components/Card";
-import "./style.css";
+import SearchForm from "../../components/SearchForm";
+import Card from "../../components/Card";
+import "../../style.css";
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min";
-import apiService from "./services/apiService";
+import apiService from "../../services/apiService";
+import Button from "../../components/Button";
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
+            searchValue: "marvel",
+            page: 1,
             filmes:
                 [
                     {
@@ -87,12 +90,13 @@ class App extends Component {
         };
 
         this.searchMovies = this.searchMovies.bind(this);
+        this.onButtonClick = this.onButtonClick.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
-    searchMovies(entrada) {
-        apiService.ListaFilmes(entrada)
+    searchMovies (searchValue) {
+        apiService.ListaFilmes({searchValue})
             .then(response => {
-                console.log(response);
                 if(response.data.Response === 'True'){
                     this.setState({
                         filmes: response.data.Search
@@ -104,11 +108,37 @@ class App extends Component {
             });
     }
 
+    onButtonClick () {
+        let page = this.state.page + 1;
+        let searchValue = this.state.searchValue;
+
+        apiService.ListaFilmes({searchValue, page})
+        .then(response => {
+            if(response.data.Response === 'True'){
+                console.log(response);
+                this.setState({
+                    page: page,
+                    filmes: response.data.Search
+                });
+            }
+        })
+    }
+
+    handleChange (event) {
+        this.setState({
+            searchValue: event.target.value
+        });
+    }
+
     render() {
         return (
             <main>
                 <div className="container">
-                    <SearchForm onSubmit={this.searchMovies} />
+                    <SearchForm
+                        onSubmit={this.searchMovies}
+                        searchValue={this.state.searchValue}
+                        handleChange={this.handleChange}
+                    />
                     <section className="grid-template">
                         {
                             this.state.filmes.map( filme =>
@@ -116,6 +146,7 @@ class App extends Component {
                             )
                         }
                     </section>
+                    <Button onClick={this.onButtonClick}/>
                 </div>
             </main>
         );
