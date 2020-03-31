@@ -7,7 +7,7 @@ import "materialize-css/dist/js/materialize.min";
 import apiService from "../../services/apiService";
 import Button from "../../components/Button";
 
-class App extends Component {
+class Inicial extends Component {
     constructor(props) {
         super(props);
 
@@ -20,6 +20,20 @@ class App extends Component {
         this.searchMovies = this.searchMovies.bind(this);
         this.onButtonClick = this.onButtonClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.getMoviesBySearchValueAndPage = this.getMoviesBySearchValueAndPage.bind(this);
+    }
+
+    getMoviesBySearchValueAndPage ({searchValue, page = 1}) {
+        apiService.ListaFilmes({searchValue, page})
+        .then(response => {
+            if(response.data.Response === 'True'){
+                console.log(response);
+                this.setState({
+                    page: page,
+                    filmes: response.data.Search
+                });
+            }
+        })
     }
 
     searchMovies (searchValue) {
@@ -30,10 +44,13 @@ class App extends Component {
                     this.setState({
                         filmes: response.data.Search
                     })
+                }else{
+                    //TODO: Exibir mensagem de erro
                 }
             })
             .catch(error => {
                 console.log(error);
+                //TODO: Exibir mensagem de erro
             });
     }
 
@@ -82,4 +99,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Inicial;
