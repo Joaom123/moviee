@@ -7,7 +7,6 @@ const SearchForm = props => {
         props.onSubmit(props.searchValue);
     }
 
-
     return (
         <div className="row">
             <form className="col s12" action="">
@@ -19,6 +18,7 @@ const SearchForm = props => {
                             id="nomeFilme"
                             value={props.searchValue}
                             onChange={props.handleChange}
+                            name="nomeFilme"
                         />
                         <label htmlFor="nomeFilme">Nome do Filme</label>
                     </div>
