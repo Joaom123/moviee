@@ -6,7 +6,6 @@ import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min";
 import apiService from "../../services/apiService";
 import Button from "../../components/Button";
-import validacaoInput from "../../services/validacaoInputService";
 
 class Inicial extends Component {
     constructor(props) {
@@ -27,7 +26,7 @@ class Inicial extends Component {
     getMoviesBySearchValueAndPage ({searchValue, page = 1}) {
         apiService.ListaFilmes({searchValue, page})
         .then(response => {
-            console.log(response);
+            //console.log(response);
             if(response.data.Response === 'True'){
                 this.setState({
                     page,
@@ -56,7 +55,7 @@ class Inicial extends Component {
     handleChange (event) {
         let searchValue = event.target.value;
 
-        validacaoInput.search(event);
+        //validacaoInput.search(event);
 
         this.setState({
             searchValue
