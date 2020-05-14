@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import SearchForm from "../../components/SearchForm";
 import Card from "../../components/Card";
+import Button from "../../components/Button";
 import "../../style.css";
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min";
 import apiService from "../../services/apiService";
-import Button from "../../components/Button";
 
 class Inicial extends Component {
     constructor(props) {
@@ -24,9 +24,9 @@ class Inicial extends Component {
     }
 
     getMoviesBySearchValueAndPage ({searchValue, page = 1}) {
-        apiService.ListaFilmes({searchValue, page})
+        apiService.listaFilmes({searchValue, page})
         .then(response => {
-            //console.log(response);
+            console.log(response);
             if(response.data.Response === 'True'){
                 this.setState({
                     page,
@@ -37,6 +37,7 @@ class Inicial extends Component {
             }
         })
         .catch(error => {
+            console.log("Lançou erro")
             console.log(error);
         })
     }
@@ -55,8 +56,6 @@ class Inicial extends Component {
     handleChange (event) {
         let searchValue = event.target.value;
 
-        //validacaoInput.search(event);
-
         this.setState({
             searchValue
         });
@@ -74,7 +73,7 @@ class Inicial extends Component {
                     <section className="grid-template">
                         {
                             this.state.filmes.map( filme =>
-                                <Card filme = {filme}/>
+                                <Card filme = {filme} key={filme.imdbID}/>
                             )
                         }
                     </section>
