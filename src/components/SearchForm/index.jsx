@@ -22,11 +22,6 @@ const SearchForm = props => {
                         />
                         <label htmlFor="nomeFilme">Nome do Filme</label>
                     </div>
-                    <input
-                        type="submit"
-                        value="Pesquisar"
-                        onClick={(event) => handleSubmit(event)}
-                    />
                 </div>
             </form>
         </div>

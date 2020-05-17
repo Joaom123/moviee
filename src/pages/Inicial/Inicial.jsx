@@ -17,22 +17,21 @@ class Inicial extends Component {
             filmes: [],
         };
 
-        this.onSubmit = this.onSubmit.bind(this);
         this.onButtonClick = this.onButtonClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.getMoviesBySearchValueAndPage = this.getMoviesBySearchValueAndPage.bind(this);
     }
 
-    getMoviesBySearchValueAndPage ({searchValue, page = 1}) {
+    getMoviesBySearchValueAndPage({searchValue, page = 1}) {
         apiService.listaFilmes({searchValue, page})
         .then(response => {
             console.log(response);
-            if(response.data.Response === 'True'){
+            if (response.data.Response === 'True') {
                 this.setState({
                     page,
                     filmes: response.data.Search
                 });
-            }else{
+            } else {
                 //TODO: Mensagem de erro
             }
         })
@@ -42,23 +41,22 @@ class Inicial extends Component {
         })
     }
 
-    onSubmit (searchValue) {
-        this.getMoviesBySearchValueAndPage({searchValue});
-    }
-
-    onButtonClick () {
+    onButtonClick() {
         let page = this.state.page + 1;
         let searchValue = this.state.searchValue;
 
         this.getMoviesBySearchValueAndPage({searchValue, page});
     }
 
-    handleChange (event) {
+    handleChange(event) {
         let searchValue = event.target.value;
 
         this.setState({
             searchValue
         });
+
+        if(searchValue.length >= 3)
+            this.getMoviesBySearchValueAndPage({searchValue});
     }
 
     render() {
@@ -66,14 +64,13 @@ class Inicial extends Component {
             <main>
                 <div className="container">
                     <SearchForm
-                        onSubmit={this.onSubmit}
                         searchValue={this.state.searchValue}
                         handleChange={this.handleChange}
                     />
                     <section className="grid-template">
                         {
-                            this.state.filmes.map( filme =>
-                                <Card filme = {filme} key={filme.imdbID}/>
+                            this.state.filmes.map(filme =>
+                                <Card filme={filme}/>
                             )
                         }
                     </section>
