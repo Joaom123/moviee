@@ -10,7 +10,8 @@ const apiService = {
                 apikey: apiKey,
                 s: searchValue,
                 t: "movie",
-                page: page
+                page: page,
+                plot: "full"
             },
         });
     },

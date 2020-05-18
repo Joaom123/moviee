@@ -36,7 +36,6 @@ class Inicial extends Component {
             }
         })
         .catch(error => {
-            console.log("Lançou erro")
             console.log(error);
         })
     }
@@ -67,12 +66,11 @@ class Inicial extends Component {
                         searchValue={this.state.searchValue}
                         handleChange={this.handleChange}
                     />
-                    <section className="grid-template">
-                        {
-                            this.state.filmes.map(filme =>
-                                <Card filme={filme}/>
-                            )
-                        }
+                    <section className="grid-template">{
+                        this.state.filmes.map(filme =>
+                            <Card filme={filme} key={filme.imdbID}/>
+                        )
+                    }
                     </section>
                     <Button onClick={this.onButtonClick}/>
                 </div>
