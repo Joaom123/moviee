@@ -23,7 +23,7 @@ class Inicial extends Component {
     }
 
     getMoviesBySearchValueAndPage({searchValue, page = 1}) {
-        apiService.listaFilmes({searchValue, page})
+        apiService.getMoviesList({searchValue, page})
         .then(response => {
             console.log(response);
             if (response.data.Response === 'True') {

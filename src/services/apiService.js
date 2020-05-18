@@ -4,17 +4,22 @@ const apiKey = 'e7bf29e9';
 const url = 'http://www.omdbapi.com';
 
 const apiService = {
-    listaFilmes: ({searchValue, page = 1}) => {
-        return axios.get(url, {
-            params: {
-                apikey: apiKey,
-                s: searchValue,
-                t: "movie",
-                page: page,
-                plot: "full"
-            },
-        });
-    },
+    getMoviesList: ({searchValue, page = 1}) => axios.get(url, {
+        params: {
+            apikey: apiKey,
+            s: searchValue,
+            t: "movie",
+            page: page,
+        },
+    }),
+    getMovieByImdbId: ({imdbId}) => axios.get(url, {
+        params: {
+            apikey: apiKey,
+            i: imdbId,
+            type: "movie",
+            plot: "full"
+        },
+    }),
 };
 
 export default apiService;
