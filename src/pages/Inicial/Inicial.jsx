@@ -14,7 +14,7 @@ class Inicial extends Component {
         this.state = {
             searchValue: "",
             page: 1,
-            filmes: [],
+            movies: [],
         };
 
         this.onButtonClick = this.onButtonClick.bind(this);
@@ -29,7 +29,7 @@ class Inicial extends Component {
             if (response.data.Response === 'True') {
                 this.setState({
                     page,
-                    filmes: response.data.Search
+                    movies: response.data.Search
                 });
             } else {
                 //TODO: Mensagem de erro
@@ -58,6 +58,13 @@ class Inicial extends Component {
             this.getMoviesBySearchValueAndPage({searchValue});
     }
 
+    clickOnCardHandle = imdbId =>
+        apiService.getMovieByImdbId({imdbId})
+        .then(response => {
+            console.log(response.data);
+            //TODO: setMovie with data
+        });
+
     render() {
         return (
             <main>
@@ -66,9 +73,13 @@ class Inicial extends Component {
                         searchValue={this.state.searchValue}
                         handleChange={this.handleChange}
                     />
-                    <section className="grid-template">{
-                        this.state.filmes.map(filme =>
-                            <Card filme={filme} key={filme.imdbID}/>
+                    <section className="moviesCards">{
+                        this.state.movies.map(movie =>
+                            <Card
+                                key={movie.imdbID}
+                                filme={movie}
+                                onClick={() => this.clickOnCardHandle(movie.imdbID)}
+                            />
                         )
                     }
                     </section>

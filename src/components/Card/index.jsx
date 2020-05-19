@@ -2,7 +2,7 @@ import React from "react";
 import "../../style.css"
 
 const Card = props =>
-    <div className="card">
+    <div className="card" onClick={props.onClick}>
         <img
             className="card__imagem"
             src={
@@ -16,5 +16,4 @@ const Card = props =>
             <p>{props.filme.Year}</p>
         </div>
     </div>
-
 export default Card;
