@@ -16,7 +16,7 @@ exports[`snapshot página inicial, sem dados 1`] = `
             class="row"
           >
             <div
-              class="input-field col s6"
+              class="input-field col s12 m6 offset-m3"
             >
               <input
                 class="validate"
@@ -35,7 +35,7 @@ exports[`snapshot página inicial, sem dados 1`] = `
         </form>
       </div>
       <section
-        class="grid-template"
+        class="moviesCards"
       />
       <button>
         Próxima página
