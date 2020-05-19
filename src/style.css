@@ -2,9 +2,9 @@ main {
     width: 100%;
 }
 
-.grid-template {
+.moviesCards {
     display: grid;
-    grid-template-columns: repeat(5, 150px);
+    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
     grid-gap: 50px;
 }
 

@@ -4,7 +4,7 @@ const SearchForm = props =>
     <div className="row">
         <form className="col s12">
             <div className="row">
-                <div className="input-field col s6">
+                <div className="input-field col s12 m6 offset-m3">
                     <input
                         className="validate"
                         type="text"
