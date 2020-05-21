@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import SearchForm from "../../components/SearchForm";
 import Card from "../../components/Card";
+import Pagination from "../../components/Pagination";
 import "../../style.css";
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min";
@@ -20,13 +21,12 @@ class Inicial extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.getMoviesBySearchValueAndPage = this.getMoviesBySearchValueAndPage.bind(this);
-        this.page = this.page.bind(this);
+        this.handleChangeOfPage = this.handleChangeOfPage.bind(this);
     }
 
     getMoviesBySearchValueAndPage({searchValue, page = 1}) {
         apiService.getMoviesList({searchValue, page})
         .then(response => {
-            console.log(response);
             if (response.data.Response === 'True') {
                 this.setState({
                     page,
@@ -42,7 +42,7 @@ class Inicial extends Component {
         })
     }
 
-    page(e, page) {
+    handleChangeOfPage(e, page) {
         e.preventDefault();
         let searchValue = this.state.searchValue;
 
@@ -91,19 +91,11 @@ class Inicial extends Component {
                         )
                     }
                     </section>
-                    <ul className="pagination">
-                        {/*<li className="disabled">*/}
-                        <li className={this.state.page === 1 ? "disabled" : "waves-effect"}>
-                            <a href="#!" onClick={(e) => this.page(e, this.state.page - 1)}>
-                            <i className="material-icons">chevron_left</i></a>
-                        </li>
-                        <li className="active"><a href="#!">1</a></li>
-                        <li className="waves-effect"><a href="#!">2</a></li>
-                        <li className={this.state.page === Math.floor(this.state.totalResults/10) ? "disabled" : "waves-effect"}>
-                            <a href="#!" onClick={(e) => this.page(e, this.state.page + 1)}>
-                            <i className="material-icons">chevron_right</i></a>
-                        </li>
-                    </ul>
+                    <Pagination
+                        totalResults={this.state.totalResults}
+                        page={this.state.page}
+                        handleChangeOfPage={this.handleChangeOfPage}
+                    />
                 </div>
             </main>
         );
