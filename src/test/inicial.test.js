@@ -4,7 +4,7 @@ import { render, cleanup } from "@testing-library/react";
 
 afterEach(cleanup)
 
-it('snapshot página inicial, sem dados', () => {
+it('snapshot página inicial', () => {
     const {asFragment} = render(<Inicial/>);
 
     expect(asFragment(<Inicial/>)).toMatchSnapshot();

@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import SearchForm from "../../components/SearchForm";
 import Card from "../../components/Card";
-import Button from "../../components/Button";
 import "../../style.css";
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min";
 import apiService from "../../services/apiService";
+import "material-design-icons/iconfont/material-icons.css";
 
 class Inicial extends Component {
     constructor(props) {
@@ -15,11 +15,12 @@ class Inicial extends Component {
             searchValue: "",
             page: 1,
             movies: [],
+            totalResults: 0
         };
 
-        this.onButtonClick = this.onButtonClick.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.getMoviesBySearchValueAndPage = this.getMoviesBySearchValueAndPage.bind(this);
+        this.page = this.page.bind(this);
     }
 
     getMoviesBySearchValueAndPage({searchValue, page = 1}) {
@@ -29,7 +30,8 @@ class Inicial extends Component {
             if (response.data.Response === 'True') {
                 this.setState({
                     page,
-                    movies: response.data.Search
+                    movies: response.data.Search,
+                    totalResults: response.data.totalResults
                 });
             } else {
                 //TODO: Mensagem de erro
@@ -40,9 +42,15 @@ class Inicial extends Component {
         })
     }
 
-    onButtonClick() {
-        let page = this.state.page + 1;
+    page(e, page) {
+        e.preventDefault();
         let searchValue = this.state.searchValue;
+
+        if (searchValue === "")
+            return ;
+
+        if (page < 1)
+            return ;
 
         this.getMoviesBySearchValueAndPage({searchValue, page});
     }
@@ -83,7 +91,19 @@ class Inicial extends Component {
                         )
                     }
                     </section>
-                    <Button onClick={this.onButtonClick}/>
+                    <ul className="pagination">
+                        {/*<li className="disabled">*/}
+                        <li className={this.state.page === 1 ? "disabled" : "waves-effect"}>
+                            <a href="#!" onClick={(e) => this.page(e, this.state.page - 1)}>
+                            <i className="material-icons">chevron_left</i></a>
+                        </li>
+                        <li className="active"><a href="#!">1</a></li>
+                        <li className="waves-effect"><a href="#!">2</a></li>
+                        <li className={this.state.page === Math.floor(this.state.totalResults/10) ? "disabled" : "waves-effect"}>
+                            <a href="#!" onClick={(e) => this.page(e, this.state.page + 1)}>
+                            <i className="material-icons">chevron_right</i></a>
+                        </li>
+                    </ul>
                 </div>
             </main>
         );
