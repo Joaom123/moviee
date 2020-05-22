@@ -5,25 +5,25 @@ import "materialize-css/dist/js/materialize.min";
 import "material-design-icons/iconfont/material-icons.css";
 
 function Pagination({totalResults, page, handleChangeOfPage}) {
+    const Page = (number) => {
+        return (
+            <li className={page === number ? "active" : "waves-effect"} key={number}>
+                <a href="#!" onClick={(e) => handleChangeOfPage(e, number)}>{number}</a>
+            </li>
+        )
+    }
+
+
     const Pages = () => {
         const numberOfPages = Math.ceil(totalResults / 10);
         let pageElements = [];
 
         if (numberOfPages === page) {
-            pageElements.push(
-                <li className="waves-effect" key={1}>
-                    <a href="#!" onClick={(e) => handleChangeOfPage(e, 1)}>1</a>
-                </li>
-            );
+            pageElements.push(Page(1));
             pageElements.push(<span>...</span>);
 
             for (let i = page - 5; i <= page; i++)
-                pageElements.push(
-                    <li className={page === i ? "active" : "waves-effect"} key={i}>
-                        <a href="#!" onClick={(e) => handleChangeOfPage(e, i)}>{i}</a>
-                    </li>
-                )
-
+                pageElements.push(Page(i));
 
             return (
                 <Fragment>
@@ -34,11 +34,7 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
 
         if (numberOfPages - page < 5) {
             for (let i = page; i <= numberOfPages; i++)
-                pageElements.push(
-                    <li className={page === i ? "active" : "waves-effect"} key={i}>
-                        <a href="#!" onClick={(e) => handleChangeOfPage(e, i)}>i</a>
-                    </li>
-                )
+                pageElements.push(Page(i));
 
             return (
                 <Fragment>
@@ -49,18 +45,10 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
 
         if (page >= 5){
             for (let i = page - 4; i <= page; i++)
-                pageElements.push(
-                    <li className={page === i ? "active" : "waves-effect"}>
-                        <a href="#!" onClick={(e) => handleChangeOfPage(e, i)}>{i}</a>
-                    </li>
-                )
+                pageElements.push(Page(i));
 
             pageElements.push(<span>...</span>);
-            pageElements.push(
-                <li className="waves-effect" key={numberOfPages}>
-                    <a href="#!" onClick={(e) => handleChangeOfPage(e, numberOfPages)}>{numberOfPages}</a>
-                </li>
-            );
+            pageElements.push(Page(numberOfPages));
 
             return (
                 <Fragment>
@@ -70,18 +58,10 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
         }
 
         for (let i = 1; i <= 5; i++)
-            pageElements.push(
-                <li className={page === i ? "active" : "waves-effect"} key={i}>
-                    <a href="#!" onClick={(e) => handleChangeOfPage(e, i)}>{i}</a>
-                </li>
-            )
+            pageElements.push(Page(i));
 
         pageElements.push(<span>...</span>);
-        pageElements.push(
-            <li className="waves-effect" key={numberOfPages}>
-                <a href="#!" onClick={(e) => handleChangeOfPage(e, numberOfPages)}>{numberOfPages}</a>
-            </li>
-        );
+        pageElements.push(Page(numberOfPages));
 
         return (
             <Fragment>
