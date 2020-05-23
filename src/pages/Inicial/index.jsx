@@ -8,7 +8,7 @@ import "materialize-css/dist/js/materialize.min";
 import apiService from "../../services/apiService";
 import "material-design-icons/iconfont/material-icons.css";
 
-class Index extends Component {
+class Inicial extends Component {
     constructor(props) {
         super(props);
 
@@ -102,4 +102,4 @@ class Index extends Component {
     }
 }
 
-export default Index;
+export default Inicial;
