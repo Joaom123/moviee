@@ -13,14 +13,13 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
         )
     }
 
-
     const Pages = () => {
         const numberOfPages = Math.ceil(totalResults / 10);
         let pageElements = [];
 
         if (numberOfPages === page) {
             pageElements.push(Page(1));
-            pageElements.push(<span>...</span>);
+            pageElements.push(<span key={numberOfPages + 1}>...</span>);
 
             for (let i = page - 5; i <= page; i++)
                 pageElements.push(Page(i));
@@ -47,7 +46,7 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
             for (let i = page - 4; i <= page; i++)
                 pageElements.push(Page(i));
 
-            pageElements.push(<span>...</span>);
+            pageElements.push(<span key={numberOfPages + 1}>...</span>);
             pageElements.push(Page(numberOfPages));
 
             return (
@@ -60,7 +59,7 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
         for (let i = 1; i <= 5; i++)
             pageElements.push(Page(i));
 
-        pageElements.push(<span>...</span>);
+        pageElements.push(<span key={numberOfPages + 1}>...</span>);
         pageElements.push(Page(numberOfPages));
 
         return (
@@ -76,7 +75,7 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
                 <a href="#!" onClick={(e) => handleChangeOfPage(e, page - 1)}>
                     <i className="material-icons">chevron_left</i></a>
             </li>
-            <Pages />
+            <Pages key={1}/>
             <li className={page === Math.floor(totalResults / 10) ? "disabled" : "waves-effect"}>
                 <a href="#!" onClick={(e) => handleChangeOfPage(e, page + 1)}>
                     <i className="material-icons">chevron_right</i></a>
