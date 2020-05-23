@@ -72,12 +72,12 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
     return (
         <ul className="pagination">
             <li className={page === 1 ? "disabled" : "waves-effect"}>
-                <a href="#!" onClick={(e) => handleChangeOfPage(e, page - 1)}>
+                <a href="#" onClick={(e) => handleChangeOfPage(e, page - 1)}>
                     <i className="material-icons">chevron_left</i></a>
             </li>
             <Pages key={1}/>
             <li className={page === Math.floor(totalResults / 10) ? "disabled" : "waves-effect"}>
-                <a href="#!" onClick={(e) => handleChangeOfPage(e, page + 1)}>
+                <a href="#" onClick={(e) => handleChangeOfPage(e, page + 1)}>
                     <i className="material-icons">chevron_right</i></a>
             </li>
         </ul>
