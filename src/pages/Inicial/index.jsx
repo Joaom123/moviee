@@ -91,11 +91,15 @@ class Inicial extends Component {
                         )
                     }
                     </section>
-                    <Pagination
-                        totalResults={this.state.totalResults}
-                        page={this.state.page}
-                        handleChangeOfPage={this.handleChangeOfPage}
-                    />
+                    {
+                        this.state.totalResults !== 0 ?
+                            <Pagination
+                                totalResults={this.state.totalResults}
+                                page={this.state.page}
+                                handleChangeOfPage={this.handleChangeOfPage}
+                            />
+                            : null
+                    }
                 </div>
             </main>
         );
