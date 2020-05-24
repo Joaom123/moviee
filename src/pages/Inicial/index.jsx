@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
-import SearchForm from "../../components/SearchForm";
-import Card from "../../components/Card";
-import Pagination from "../../components/Pagination";
+
 import "../../style.css";
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min";
-import apiService from "../../services/apiService";
 import "material-design-icons/iconfont/material-icons.css";
+
+import SearchForm from "../../components/SearchForm";
+import Card from "../../components/Card";
+import Pagination from "../../components/Pagination";
+import Modal from "../../components/Modal";
+
+import apiService from "../../services/apiService";
 
 class Inicial extends Component {
     constructor(props) {
@@ -16,6 +20,7 @@ class Inicial extends Component {
             searchValue: "",
             page: 1,
             movies: [],
+            movie: [],
             totalResults: 0
         };
 
@@ -70,8 +75,9 @@ class Inicial extends Component {
     clickOnCardHandle = imdbId =>
         apiService.getMovieByImdbId({imdbId})
         .then(response => {
+            this.setState({movie: response.data})
             console.log(response.data);
-            //TODO: setMovie with data
+            //TODO: Open Modal
         });
 
     render() {
@@ -99,6 +105,11 @@ class Inicial extends Component {
                                 page={this.state.page}
                                 handleChangeOfPage={this.handleChangeOfPage}
                             />
+                            : null
+                    }
+                    {
+                        this.state.movie.length !== 0 ?
+                            <Modal movie={this.state.movie}/>
                             : null
                     }
                 </div>
