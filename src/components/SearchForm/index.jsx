@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchForm = props =>
+const SearchForm = ({searchValue, handleChange}) =>
     <div className="row">
         <form className="col s12">
             <div className="row">
@@ -9,8 +9,8 @@ const SearchForm = props =>
                         className="validate"
                         type="text"
                         id="nomeFilme"
-                        value={props.searchValue}
-                        onChange={props.handleChange}
+                        value={searchValue}
+                        onChange={handleChange}
                         name="nomeFilme"
                     />
                     <label htmlFor="nomeFilme">Nome do Filme</label>
