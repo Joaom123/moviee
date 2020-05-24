@@ -86,7 +86,7 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
                 <a href="#!" onClick={(e) => handleChangeOfPage(e, page - 1)}>
                     <i className="material-icons">chevron_left</i></a>
             </li>
-            <PagesLinks key={1}/>
+            <PagesLinks />
             <li className={page === Math.floor(totalResults / 10) ? "disabled" : "waves-effect"}>
                 <a href="#!" onClick={(e) => handleChangeOfPage(e, page + 1)}>
                     <i className="material-icons">chevron_right</i></a>
