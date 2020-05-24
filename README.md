@@ -1,12 +1,12 @@
 # Moviee
 Exibição de informações sobre filmes.
 
-##Informações
+## Informações
 * API de utilizada: [OMDb API - The Open Movie Database](http://www.omdbapi.com/)
 * Framework CSS: [Materialize](https://materializecss.com/)
 * Library Frontend: [React](https://reactjs.org/)
 
-##Lista de tarefas  
+## Lista de tarefas  
 Progresso: ![75%](https://progress-bar.dev/75/)
 - [x] Conexão com OMDb API
 - [x] Cards responsíveis
