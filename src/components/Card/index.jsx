@@ -11,9 +11,10 @@ const Card = props =>
                     : props.filme.Poster
             }
             alt="" />
-        <div>
-            <p>{props.filme.Title}</p>
-            <p>{props.filme.Year}</p>
+        <div className="card__info">
+            <span>{props.filme.Title}</span>
+            <br/>
+            <span>{props.filme.Year}</span>
         </div>
     </div>
 export default Card;
