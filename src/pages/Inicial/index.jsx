@@ -58,12 +58,13 @@ class Inicial extends Component {
     handleChange(event) {
         let searchValue = event.target.value;
 
-        this.setState({
-            searchValue
-        });
+        if (searchValue === " ")
+            return ;
+
+        this.setState({searchValue});
 
         if(searchValue.length >= 3)
-            this.getMoviesBySearchValueAndPage({searchValue});
+            this.getMoviesBySearchValueAndPage({searchValue: searchValue.trim()});
     }
 
     clickOnCardHandle = imdbId =>
