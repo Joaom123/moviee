@@ -7,7 +7,7 @@ Exibição de informações sobre filmes.
 * Library Frontend: [React](https://reactjs.org/)
 
 ## Lista de tarefas  
-Progresso: ![75%](https://progress-bar.dev/75/)
+Progresso: ![80%](https://progress-bar.dev/80/)
 - [x] Conexão com OMDb API
 - [x] Cards responsíveis
 - [x] Pesquisa de filmes após terceiro dígito
