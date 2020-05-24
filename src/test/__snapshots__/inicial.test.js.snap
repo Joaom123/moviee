@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`snapshot página inicial, sem dados 1`] = `
+exports[`snapshot página inicial 1`] = `
 <DocumentFragment>
   <main>
     <div
@@ -37,9 +37,6 @@ exports[`snapshot página inicial, sem dados 1`] = `
       <section
         class="moviesCards"
       />
-      <button>
-        Próxima página
-      </button>
     </div>
   </main>
 </DocumentFragment>
