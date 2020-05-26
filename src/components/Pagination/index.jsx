@@ -80,6 +80,9 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
         );
     }
 
+    if(totalResults === 0)
+        return null;
+
     return (
         <ul className="pagination">
             <li className={page === 1 ? "disabled" : "waves-effect"}>

@@ -98,20 +98,12 @@ class Inicial extends Component {
                         )
                     }
                     </section>
-                    {
-                        this.state.totalResults !== 0 ?
-                            <Pagination
-                                totalResults={this.state.totalResults}
-                                page={this.state.page}
-                                handleChangeOfPage={this.handleChangeOfPage}
-                            />
-                            : null
-                    }
-                    {
-                        this.state.movie.length !== 0 ?
-                            <Modal movie={this.state.movie}/>
-                            : null
-                    }
+                    <Pagination
+                        totalResults={this.state.totalResults}
+                        page={this.state.page}
+                        handleChangeOfPage={this.handleChangeOfPage}
+                    />
+                    <Modal movie={this.state.movie}/>
                 </div>
             </main>
         );
