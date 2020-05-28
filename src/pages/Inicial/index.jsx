@@ -5,10 +5,10 @@ import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min";
 import "material-design-icons/iconfont/material-icons.css";
 
-import SearchForm from "../../components/SearchForm";
-import Card from "../../components/Card";
-import Pagination from "../../components/Pagination";
 import Modal from "../../components/Modal";
+import Movies from "../../components/Movies";
+import SearchForm from "../../components/SearchForm";
+import Pagination from "../../components/Pagination";
 
 import apiService from "../../services/apiService";
 
@@ -72,7 +72,7 @@ class Inicial extends Component {
             this.getMoviesBySearchValueAndPage({searchValue: searchValue.trim()});
     }
 
-    clickOnCardHandle = imdbId =>
+    onCardClick = (imdbId) =>
         apiService.getMovieByImdbId({imdbId})
         .then(response => {
             this.setState({movie: response.data})
@@ -88,16 +88,10 @@ class Inicial extends Component {
                         searchValue={this.state.searchValue}
                         handleChange={this.handleChange}
                     />
-                    <section className="moviesCards">{
-                        this.state.movies.map(movie =>
-                            <Card
-                                key={movie.imdbID}
-                                filme={movie}
-                                onClick={() => this.clickOnCardHandle(movie.imdbID)}
-                            />
-                        )
-                    }
-                    </section>
+                    <Movies
+                        movies={this.state.movies}
+                        onCardClick={this.onCardClick}
+                    />
                     <Pagination
                         totalResults={this.state.totalResults}
                         page={this.state.page}
