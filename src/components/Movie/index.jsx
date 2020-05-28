@@ -1,22 +1,22 @@
 import React from "react";
 import "../../style.css"
 
-const Card = ({filme, onClick}) =>
+const Movie = ({movie, onClick}) =>
     <div className="card" onClick={onClick}>
         <img
             className="card__imagem"
             src={
-                filme.Poster === "N/A"
+                movie.Poster === "N/A"
                     ? "/no-poster.jpg"
-                    : filme.Poster
+                    : movie.Poster
             }
             alt=""
         />
         <div className="card__info">
-            <span>{filme.Title}</span>
+            <span>{movie.Title}</span>
             <br/>
-            <span>{filme.Year}</span>
+            <span>{movie.Year}</span>
         </div>
     </div>
 
-export default Card;
+export default Movie;

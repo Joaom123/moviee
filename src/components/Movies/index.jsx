@@ -1,13 +1,13 @@
 import React from 'react';
-import Card from "../Card";
+import Movie from "../Movie";
 
 const Movies = ({movies, onCardClick}) =>
     <section className="moviesCards">
         {
             movies.map(movie =>
-                <Card
+                <Movie
                     key={movie.imdbID}
-                    filme={movie}
+                    movie={movie}
                     onClick={() => onCardClick(movie.imdbID)}
                 />
             )
