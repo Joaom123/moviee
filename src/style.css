@@ -4,8 +4,10 @@ main {
 
 .moviesCards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-rows: auto;
+    grid-gap: 25px;
+    justify-content: center;
 }
 
 .card {
