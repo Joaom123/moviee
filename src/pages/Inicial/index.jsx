@@ -21,7 +21,8 @@ class Inicial extends Component {
             page: 1,
             movies: [],
             movie: [],
-            totalResults: 0
+            totalResults: 0,
+            toggleModal: false
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -74,30 +75,33 @@ class Inicial extends Component {
 
     onCardClick = (imdbId) =>
         apiService.getMovieByImdbId({imdbId})
-        .then(response => {
-            this.setState({movie: response.data})
-            console.log(response.data);
-            //TODO: Open Modal
-        });
+        .then(response =>
+            this.setState({
+                movie: response.data,
+                toggleModal: true
+            })
+        );
 
     render() {
+        const { searchValue, movies, totalResults, page, movie, toggleModal } = this.state;
+
         return (
             <main>
                 <div className="container">
                     <SearchForm
-                        searchValue={this.state.searchValue}
+                        searchValue={searchValue}
                         handleChange={this.handleChange}
                     />
                     <Movies
-                        movies={this.state.movies}
+                        movies={movies}
                         onCardClick={this.onCardClick}
                     />
                     <Pagination
-                        totalResults={this.state.totalResults}
-                        page={this.state.page}
+                        totalResults={totalResults}
+                        page={page}
                         handleChangeOfPage={this.handleChangeOfPage}
                     />
-                    <Modal movie={this.state.movie}/>
+                    <Modal movie={movie} toggleModal={toggleModal} />
                 </div>
             </main>
         );
