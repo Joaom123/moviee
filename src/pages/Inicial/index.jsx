@@ -86,23 +86,21 @@ class Inicial extends Component {
         const { searchValue, movies, totalResults, page, movie, toggleModal } = this.state;
 
         return (
-            <main>
-                <div className="container">
-                    <SearchForm
-                        searchValue={searchValue}
-                        handleChange={this.handleChange}
-                    />
-                    <Movies
-                        movies={movies}
-                        onCardClick={this.onCardClick}
-                    />
-                    <Pagination
-                        totalResults={totalResults}
-                        page={page}
-                        handleChangeOfPage={this.handleChangeOfPage}
-                    />
-                    <Modal movie={movie} toggleModal={toggleModal} />
-                </div>
+            <main className="container">
+                <SearchForm
+                    searchValue={searchValue}
+                    handleChange={this.handleChange}
+                />
+                <Movies
+                    movies={movies}
+                    onCardClick={this.onCardClick}
+                />
+                <Pagination
+                    totalResults={totalResults}
+                    page={page}
+                    handleChangeOfPage={this.handleChangeOfPage}
+                />
+                <Modal movie={movie} toggleModal={toggleModal} />
             </main>
         );
     }
