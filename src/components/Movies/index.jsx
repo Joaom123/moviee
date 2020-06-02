@@ -1,5 +1,4 @@
 import React from 'react';
-import Movie from "../Movie";
 
 const Movies = ({movies, onCardClick}) =>
     <section className="moviesCards">
@@ -13,5 +12,19 @@ const Movies = ({movies, onCardClick}) =>
             )
         }
     </section>
+
+const Movie = ({movie, onClick}) =>
+    <div className="card" onClick={onClick}>
+        <img
+            className="card__imagem"
+            src={ movie.Poster === "N/A" ? "/no-poster.jpg" : movie.Poster }
+            alt=""
+        />
+        <div className="card__info">
+            <span>{movie.Title}</span>
+            <br/>
+            <span>{movie.Year}</span>
+        </div>
+    </div>
 
 export default Movies;

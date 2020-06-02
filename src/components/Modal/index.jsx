@@ -1,6 +1,7 @@
 import React, { Component, } from "react";
-import "../../style.css";
 import M from "materialize-css";
+
+import "../../style.css";
 import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min";
 
@@ -26,8 +27,6 @@ class Modal extends Component {
     }
 
     render() {
-        const { movie } = this.props;
-
         return (
             <div
                 ref={ Modal => { this.Modal = Modal; } }
@@ -35,7 +34,7 @@ class Modal extends Component {
                 className="modal"
             >
                 <div className="modal-content">
-                    {movie.Title}
+                    {this.props.children}
                 </div>
             </div>
         );

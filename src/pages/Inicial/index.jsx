@@ -5,11 +5,7 @@ import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min";
 import "material-design-icons/iconfont/material-icons.css";
 
-import Modal from "../../components/Modal";
-import Movies from "../../components/Movies";
-import SearchForm from "../../components/SearchForm";
-import Pagination from "../../components/Pagination";
-
+import {Modal, Movies, Pagination, SearchForm} from "../../components";
 import apiService from "../../services/apiService";
 
 class Inicial extends Component {
@@ -100,7 +96,9 @@ class Inicial extends Component {
                     page={page}
                     handleChangeOfPage={this.handleChangeOfPage}
                 />
-                <Modal movie={movie} toggleModal={toggleModal} />
+                <Modal toggleModal={toggleModal}>
+                    {movie.Title}
+                </Modal>
             </main>
         );
     }
