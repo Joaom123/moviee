@@ -1,3 +1,7 @@
+body {
+    perspective: 500px;
+}
+
 main {
     width: 100%;
 }
