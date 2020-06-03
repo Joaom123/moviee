@@ -20,10 +20,8 @@ class Modal extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if (this.props.toggleModal === true) {
-            let instance = M.Modal.getInstance(this.Modal);
-            instance.open();
-        }
+        if (this.props.toggleModal === true)
+            M.Modal.getInstance(this.Modal).open();
     }
 
     render() {
@@ -33,9 +31,7 @@ class Modal extends Component {
                 id="modal"
                 className="modal"
             >
-                <div className="modal-content">
-                    {this.props.children}
-                </div>
+                <div className="modal-content">{this.props.children}</div>
             </div>
         );
     }
