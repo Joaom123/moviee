@@ -6,6 +6,17 @@ import "materialize-css/dist/css/materialize.min.css";
 import "materialize-css/dist/js/materialize.min";
 
 class Modal extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            x: 0,
+            y: 0
+        }
+
+        this.onMouseMoveHandle = this.onMouseMoveHandle.bind(this);
+        this.ref = Modal => { this.Modal = Modal; };
+    }
+
     componentDidMount() {
         const options = {
             inDuration: 300,
@@ -24,12 +35,23 @@ class Modal extends Component {
             M.Modal.getInstance(this.Modal).open();
     }
 
+    onMouseMoveHandle (event) {
+        this.setState({x: event.clientX, y: event.clientY});
+        console.log(this.Modal.getBoundingClientRect());
+    }
+
     render() {
+        const {x, y} = this.state;
+
         return (
             <div
-                ref={ Modal => { this.Modal = Modal; } }
+                ref={this.ref}
                 id="modal"
-                className="modal"
+                className="modal modal--animation"
+                onMouseMove={this.onMouseMoveHandle}
+                style={{
+                    transform: `rotateY(${x}deg) rotateX(${y}deg)`
+                }}
             >
                 <div className="modal-content">{this.props.children}</div>
             </div>
