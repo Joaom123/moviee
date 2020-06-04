@@ -18,6 +18,7 @@ class Inicial extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.getMoviesBySearchValueAndPage = this.getMoviesBySearchValueAndPage.bind(this);
         this.handleChangeOfPage = this.handleChangeOfPage.bind(this);
+        this.onCloseModal = this.onCloseModal.bind(this);
     }
 
     getMoviesBySearchValueAndPage({searchValue, page = 1}) {
@@ -72,6 +73,8 @@ class Inicial extends Component {
             })
         );
 
+    onCloseModal = () => this.setState({toggleModal: false});
+
     render() {
         const { searchValue, movies, totalResults, page, movie, toggleModal } = this.state;
 
@@ -90,7 +93,7 @@ class Inicial extends Component {
                     page={page}
                     handleChangeOfPage={this.handleChangeOfPage}
                 />
-                <Modal toggleModal={toggleModal}>
+                <Modal toggleModal={toggleModal} onCloseModal={this.onCloseModal}>
                     {movie.Title}
                 </Modal>
             </main>

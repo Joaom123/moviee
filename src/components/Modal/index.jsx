@@ -18,11 +18,12 @@ class Modal extends Component {
 
     componentDidMount() {
         const options = {
+            onCloseStart: () => this.props.onCloseModal(),
             inDuration: 300,
             outDuration: 300,
             opacity: 0.4,
             dismissible: true,
-            // startingTop: "25%",
+            startingTop: "5%",
             // endingTop: "25%"
         };
 
