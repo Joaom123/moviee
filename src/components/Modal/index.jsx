@@ -1,20 +1,19 @@
 import React, { Component, } from "react";
 import M from "materialize-css";
-
-import "../../style.css";
-import "materialize-css/dist/css/materialize.min.css";
-import "materialize-css/dist/js/materialize.min";
+import "./modal.css";
 
 class Modal extends Component {
     constructor(props) {
         super(props);
+
         this.state = {
             x: 0,
             y: 0
         }
 
         this.onMouseMoveHandle = this.onMouseMoveHandle.bind(this);
-        this.ref = Modal => { this.Modal = Modal; };
+        this.onMouseOutHandle = this.onMouseOutHandle.bind(this);
+        this.ref = Modal => {this.Modal = Modal;};
     }
 
     componentDidMount() {
@@ -36,8 +35,29 @@ class Modal extends Component {
     }
 
     onMouseMoveHandle (event) {
-        this.setState({x: event.clientX, y: event.clientY});
-        console.log(this.Modal.getBoundingClientRect());
+        const modalRect = this.Modal.getBoundingClientRect();
+
+        const centerX = modalRect.width/2 + modalRect.x;
+        const centerY = modalRect.height/2 + modalRect.y
+
+        const x = (event.clientX - centerX)*3/centerX;
+        const y = -Math.abs((event.clientY - centerY)*3/centerY);
+
+        this.setState({x, y});
+    }
+
+    onMouseOutHandle (event) {
+        this.setState({
+            x: 0,
+            y: 0
+        });
+    }
+
+    style (x, y) {
+        return {
+            transform: `rotateY(${x}deg) rotateX(${y}deg)`,
+            transition: x === 0 && y === 0 ? "transform 1s" : "inherit"
+        };
     }
 
     render() {
@@ -49,9 +69,8 @@ class Modal extends Component {
                 id="modal"
                 className="modal modal--animation"
                 onMouseMove={this.onMouseMoveHandle}
-                style={{
-                    transform: `rotateY(${x}deg) rotateX(${y}deg)`
-                }}
+                onMouseOut={this.onMouseOutHandle}
+                style={this.style(x, y)}
             >
                 <div className="modal-content">{this.props.children}</div>
             </div>
