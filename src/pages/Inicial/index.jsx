@@ -1,10 +1,4 @@
 import React, {Component} from 'react';
-
-import "../../style.css";
-import "materialize-css/dist/css/materialize.min.css";
-import "materialize-css/dist/js/materialize.min";
-import "material-design-icons/iconfont/material-icons.css";
-
 import {Modal, Movies, Pagination, SearchForm} from "../../components";
 import apiService from "../../services/apiService";
 

@@ -22,8 +22,8 @@ class Modal extends Component {
             outDuration: 300,
             opacity: 0.4,
             dismissible: true,
-            startingTop: "10%",
-            endingTop: "10%"
+            // startingTop: "25%",
+            // endingTop: "25%"
         };
 
         M.Modal.init(this.Modal, options);

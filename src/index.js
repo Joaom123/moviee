@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Inicial from './pages/Inicial';
+import "./style.css";
+import "materialize-css/dist/css/materialize.min.css";
+import "materialize-css/dist/js/materialize.min";
+import "material-design-icons/iconfont/material-icons.css";
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Inicial />, document.getElementById('root'));
