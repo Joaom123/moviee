@@ -1,4 +1,5 @@
 import React from 'react';
+import "./movies.css";
 
 const Movies = ({movies, onCardClick}) =>
     <section className="moviesCards">

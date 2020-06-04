@@ -1,8 +1,5 @@
 import React, { Fragment } from "react";
-import "../../style.css";
-import "materialize-css/dist/css/materialize.min.css";
-import "materialize-css/dist/js/materialize.min";
-import "material-design-icons/iconfont/material-icons.css";
+import "./pagination.css";
 
 function Pagination({totalResults, page, handleChangeOfPage}) {
     const PageLink = (number) => {
