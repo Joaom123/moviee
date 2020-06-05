@@ -41,8 +41,8 @@ class Modal extends Component {
         const centerX = modalRect.width/2 + modalRect.x;
         const centerY = modalRect.height/2 + modalRect.y
 
-        const x = (event.clientX - centerX)*3/centerX;
-        const y = -Math.abs((event.clientY - centerY)*3/centerY);
+        const x = (event.clientX - centerX)/centerX;
+        const y = -(event.clientY - centerY)*1.2/centerY;
 
         this.setState({x, y});
     }
