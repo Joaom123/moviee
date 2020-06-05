@@ -73,7 +73,7 @@ class Modal extends Component {
                 onMouseOut={this.onMouseOutHandle}
                 style={this.style(x, y)}
             >
-                <div className="modal-content">{this.props.children}</div>
+                {this.props.children}
             </div>
         );
     }

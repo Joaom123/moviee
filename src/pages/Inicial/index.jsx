@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Modal, Movies, Pagination, SearchForm} from "../../components";
+import {Modal, ModalMovie, Movies, Pagination, SearchForm} from "../../components";
 import apiService from "../../services/apiService";
 
 class Inicial extends Component {
@@ -93,9 +93,11 @@ class Inicial extends Component {
                     page={page}
                     handleChangeOfPage={this.handleChangeOfPage}
                 />
-                <Modal toggleModal={toggleModal} onCloseModal={this.onCloseModal}>
-                    {movie.Title}
-                </Modal>
+                <ModalMovie
+                    toggleModal={toggleModal}
+                    onCloseModal={this.onCloseModal}
+                    movie={movie}
+                />
             </main>
         );
     }
