@@ -18,11 +18,12 @@ class Modal extends Component {
 
     componentDidMount() {
         const options = {
-            onCloseStart: () => this.props.onCloseModal(),
+            onCloseStart: this.props.onCloseModal,
             inDuration: 300,
             outDuration: 300,
             opacity: 0.4,
             dismissible: true,
+            preventScrolling: false,
             startingTop: "5%",
             // endingTop: "25%"
         };
@@ -42,7 +43,7 @@ class Modal extends Component {
         const centerY = modalRect.height/2 + modalRect.y
 
         const x = (event.clientX - centerX)/centerX;
-        const y = -(event.clientY - centerY)*1.2/centerY;
+        const y = -(event.clientY - centerY)/centerY;
 
         this.setState({x, y});
     }
