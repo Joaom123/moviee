@@ -17,7 +17,7 @@ const apiService = {
             apikey: apiKey,
             i: imdbId,
             type: "movie",
-            plot: "full"
+            plot: "short"
         },
     }),
 };
