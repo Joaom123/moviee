@@ -8,7 +8,7 @@ const apiService = {
         params: {
             apikey: apiKey,
             s: searchValue,
-            t: "movie",
+            type: "movie",
             page: page,
         },
     }),
