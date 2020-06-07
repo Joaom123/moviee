@@ -15,13 +15,13 @@ const Movies = ({movies, onCardClick}) =>
     </section>
 
 const Movie = ({movie, onClick}) =>
-    <div className="card" onClick={onClick}>
+    <div className="card movieCard" onClick={onClick}>
         <img
-            className="card__imagem"
+            className="movieCard__imagem"
             src={ movie.Poster === "N/A" ? "/no-poster.jpg" : movie.Poster }
             alt=""
         />
-        <div className="card__info">
+        <div className="movieCard__info">
             <span>{movie.Title}</span>
             <br/>
             <span>{movie.Year}</span>
