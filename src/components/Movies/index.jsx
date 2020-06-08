@@ -18,7 +18,7 @@ const Movie = ({movie, onClick}) =>
     <div className="card movieCard" onClick={onClick}>
         <img
             className="movieCard__imagem"
-            src={ movie.Poster === "N/A" ? "/no-poster.jpg" : movie.Poster }
+            src={movie.Poster === "N/A" ? "/no-poster.jpg" : movie.Poster}
             alt=""
         />
         <div className="movieCard__info">
