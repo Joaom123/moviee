@@ -1,4 +1,5 @@
 .modalMovie {
+    background-color: white;
     margin-bottom: 0 !important;
     height: 100%;
 }
@@ -8,25 +9,56 @@
     height: 100%;
 }
 
-.modalMovie__info {
-    padding: 0 !important;
-}
-
-.modalMovie__header {
-    padding: 0.7rem;
-    position: relative;
-    right: 1rem;
-    margin-top: 1rem;
-    background: white;
-    box-shadow: 4px 4px 16px 0 rgba(0,0,0,0.2), -4px -4px 16px 0 rgba(0,0,0,0.2);
-
-}
-
 .modalMovie__body {
-    padding-left: 0.7rem;
+    padding-left: 0.75rem;
 }
 
 .modalMovie__title {
+    margin-bottom: 0.75rem;
     font-size: 2rem;
-    margin-bottom: 1rem;
+    font-weight: 300;
+}
+
+.modalMovie__genre {
+    margin: 0.75rem 0;
+}
+
+.modalMovie__ratedAndRuntime {
+    margin: 0.75rem 0;
+}
+
+.modalMovie__rated {
+    background-color: #BCBCBC;
+    border-radius: 15px;
+    padding: 3px 7px;
+    font-weight: 500;
+    margin-right: 10px;
+}
+
+.modalMovie__runtime {
+    background-color: #BCBCBC;
+    border-radius: 15px;
+    padding: 3px 7px;
+    font-weight: 500;
+}
+
+@media screen and (min-width: 601px) {
+    .modalMovie__header {
+        background: white;
+        padding: 0.75rem;
+        position: relative;
+        right: 1rem;
+        margin-top: 1rem;
+        box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.2), -2px -2px 8px 0 rgba(0,0,0,0.2);
+    }
+
+    .modalMovie__info {
+        padding: 0 !important;
+    }
+
+    .modalMovie__ratedAndRuntime {
+        text-align: right;
+        padding-left: 0 !important;
+        margin: 0.75rem 0;
+    }
 }

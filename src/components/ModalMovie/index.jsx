@@ -12,11 +12,11 @@ function ModalMovie({movie, toggleModal, onCloseModal}) {
                 <div className="col s12 m6 modalMovie__info">
                     <div className="modalMovie__header">
                         <h2 className="modalMovie__title">{movie.Title}</h2>
-                        <div>
-                            <span className="modalMovie__genre">{movie.Genre}</span>
-                            <div>
+                        <div className="row">
+                            <span className="col s12 l6 modalMovie__genre">{movie.Genre}</span>
+                            <div className="col s12 l6 modalMovie__ratedAndRuntime">
                                 <span className="modalMovie__rated">{movie.Rated}</span>
-                               <span className="modalMovie__runtime">{movie.Runtime}</span>
+                                <span className="modalMovie__runtime">{movie.Runtime}</span>
                             </div>
                         </div>
                     </div>
