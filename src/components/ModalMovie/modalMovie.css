@@ -11,11 +11,12 @@
 
 .modalMovie__body {
     padding-left: 0.75rem;
+    padding-right: 0.75rem;
 }
 
 .modalMovie__title {
     margin-bottom: 0.75rem;
-    font-size: 2rem;
+    font-size: 1.75rem;
     font-weight: 300;
 }
 
@@ -28,7 +29,7 @@
 }
 
 .modalMovie__rated {
-    background-color: #BCBCBC;
+    background-color: #CCCCCC;
     border-radius: 15px;
     padding: 3px 7px;
     font-weight: 500;
@@ -36,20 +37,27 @@
 }
 
 .modalMovie__runtime {
-    background-color: #BCBCBC;
+    background-color: #CCCCCC;
     border-radius: 15px;
     padding: 3px 7px;
     font-weight: 500;
 }
 
 @media screen and (min-width: 601px) {
+    .modal {
+        height: 100%;
+        width: 60%;
+        max-width: 700px;
+    }
+
     .modalMovie__header {
         background: white;
-        padding: 0.75rem;
+        padding: 1.25rem;
         position: relative;
         right: 1rem;
         margin-top: 1rem;
-        box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.2), -2px -2px 8px 0 rgba(0,0,0,0.2);
+        margin-right: 0.5rem;
+        box-shadow: 8px 8px 16px 0 rgba(0,0,0,0.2);
     }
 
     .modalMovie__info {
@@ -57,8 +65,17 @@
     }
 
     .modalMovie__ratedAndRuntime {
+        margin: 0.75rem 0;
+    }
+}
+
+@media screen and (min-width: 993px) {
+    .modal {
+        width: 70% !important;
+    }
+
+    .modalMovie__ratedAndRuntime {
         text-align: right;
         padding-left: 0 !important;
-        margin: 0.75rem 0;
     }
 }
