@@ -57,7 +57,7 @@ class Modal extends Component {
 
     style (x, y) {
         return {
-            transform: `rotateY(${x}deg) rotateX(${y}deg)`,
+            transform: `perspective(300px) rotateY(${x}deg) rotateX(${y}deg)`,
             transition: x === 0 && y === 0 ? "transform 1s" : "inherit"
         };
     }
