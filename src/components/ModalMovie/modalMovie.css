@@ -24,29 +24,36 @@
     margin: 0.75rem 0;
 }
 
-.modalMovie__ratedAndRuntime {
+.modalMovie__badges {
     margin: 0.75rem 0;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.modalMovie__rated {
+.modalMovie__badgePill {
     background-color: #CCCCCC;
     border-radius: 15px;
-    padding: 3px 7px;
+    padding: 3px 6px;
     font-weight: 500;
-    margin-right: 10px;
+    margin-right: 0.75rem;
+    margin-bottom: 3px;
 }
 
-.modalMovie__runtime {
-    background-color: #CCCCCC;
-    border-radius: 15px;
-    padding: 3px 7px;
-    font-weight: 500;
+.modalMovie__badgePill:last-child {
+    margin-right: 0;
+}
+
+@media screen and (max-width: 600px) {
+    .modalMovie {
+        max-width: 300px;
+    }
 }
 
 @media screen and (min-width: 601px) {
-    .modal {
+    .modalMovie {
         height: 100%;
-        width: 60%;
+        width: 70%;
         max-width: 700px;
     }
 
@@ -63,18 +70,14 @@
     .modalMovie__info {
         padding: 0 !important;
     }
-
-    .modalMovie__ratedAndRuntime {
-        margin: 0.75rem 0;
-    }
 }
 
 @media screen and (min-width: 993px) {
-    .modal {
+    .modalMovie {
         width: 70% !important;
     }
 
-    .modalMovie__ratedAndRuntime {
+    .modalMovie__badges {
         text-align: right;
         padding-left: 0 !important;
     }
