@@ -1,5 +1,6 @@
 import React from 'react';
 import "./movies.css";
+import {getMoviePosterOrDefaultPoster} from "../../services";
 
 const Movies = ({movies, onCardClick}) =>
     <section className="moviesCards">
@@ -18,7 +19,7 @@ const Movie = ({movie, onClick}) =>
     <div className="card movieCard" onClick={onClick}>
         <img
             className="movieCard__imagem"
-            src={movie.Poster === "N/A" ? "/no-poster.jpg" : movie.Poster}
+            src={getMoviePosterOrDefaultPoster(movie)}
             alt=""
         />
         <div className="movieCard__info">

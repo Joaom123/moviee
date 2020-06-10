@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import {Modal, ModalMovie, Movies, Pagination, SearchForm} from "../../components";
-import apiService from "../../services/apiService";
+import {ModalMovie, Movies, Pagination, SearchForm} from "../../components";
+import {apiService} from "../../services";
 
 class Inicial extends Component {
     constructor(props) {
