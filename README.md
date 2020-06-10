@@ -1,5 +1,8 @@
-# Moviee
-Exibição de informações sobre filmes.
+# Movieet
+Site em produção [Movieet](https://movieet.netlify.app/)
+
+## O que é o Movieet?
+É um buscador de filmes, além disso, exibe informações sobre os mesmos.
 
 ## Informações
 * API de filmes utilizada: [OMDb API - The Open Movie Database](http://www.omdbapi.com/)
