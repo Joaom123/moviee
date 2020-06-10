@@ -76,7 +76,7 @@ class Inicial extends Component {
     onCloseModal = () => this.setState({toggleModal: false});
 
     render() {
-        const { searchValue, movies, totalResults, page, movie, toggleModal } = this.state;
+        const {searchValue, movies, totalResults, page, movie, toggleModal} = this.state;
 
         return (
             <main className="container">

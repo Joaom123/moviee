@@ -48,7 +48,7 @@ class Modal extends Component {
         this.setState({x, y});
     }
 
-    onMouseOutHandle (event) {
+    onMouseOutHandle () {
         this.setState({
             x: 0,
             y: 0
@@ -64,17 +64,18 @@ class Modal extends Component {
 
     render() {
         const {x, y} = this.state;
+        const {modalAdditionalClass = "", children} = this.props;
 
         return (
             <div
                 ref={this.ref}
                 id="modal"
-                className="modal modal--animation"
+                className={`modal ${modalAdditionalClass}`}
                 onMouseMove={this.onMouseMoveHandle}
                 onMouseOut={this.onMouseOutHandle}
                 style={this.style(x, y)}
             >
-                {this.props.children}
+                {children}
             </div>
         );
     }
