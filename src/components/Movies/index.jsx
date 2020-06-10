@@ -15,18 +15,21 @@ const Movies = ({movies, onCardClick}) =>
         }
     </section>
 
-const Movie = ({movie, onClick}) =>
-    <div className="card movieCard" onClick={onClick}>
-        <img
-            className="movieCard__imagem"
-            src={getMoviePosterOrDefaultPoster(movie)}
-            alt=""
-        />
-        <div className="movieCard__info">
-            <span>{movie.Title}</span>
-            <br/>
-            <span>{movie.Year}</span>
+function Movie({movie, onClick}){
+    return (
+        <div className="card movieCard" onClick={onClick}>
+            <img
+                className="movieCard__imagem"
+                src={getMoviePosterOrDefaultPoster(movie)}
+                alt=""
+            />
+            <div className="movieCard__info">
+                <span>{movie.Title}</span>
+                {/*<br/>*/}
+                {/*<span>{movie.Year}</span>*/}
+            </div>
         </div>
-    </div>
+    );
+}
 
 export default Movies;
