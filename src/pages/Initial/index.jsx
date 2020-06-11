@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {ModalMovie, Movies, Pagination, SearchForm} from "../../components";
 import {apiService} from "../../services";
 
-class Inicial extends Component {
+class Initial extends Component {
     constructor(props) {
         super(props);
 
@@ -103,4 +103,4 @@ class Inicial extends Component {
     }
 }
 
-export default Inicial;
+export default Initial;
