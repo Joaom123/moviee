@@ -17,7 +17,8 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
         return (
             <li className={page === 1 ? "disabled" : "waves-effect"}>
                 <a href="#!" onClick={(e) => handleChangeOfPage(e, page - 1)}>
-                    <i className="material-icons">chevron_left</i></a>
+                    <i className="material-icons">chevron_left</i>
+                </a>
             </li>
         );
     }
@@ -26,7 +27,8 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
         return (
             <li className={page === Math.floor(totalResults / 10) ? "disabled" : "waves-effect"}>
                 <a href="#!" onClick={(e) => handleChangeOfPage(e, page + 1)}>
-                    <i className="material-icons">chevron_right</i></a>
+                    <i className="material-icons">chevron_right</i>
+                </a>
             </li>
         );
     }
