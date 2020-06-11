@@ -2,20 +2,23 @@ import React from 'react';
 import "./movies.css";
 import {getMoviePosterOrDefaultPoster} from "../../services";
 
-const Movies = ({movies, onCardClick}) =>
-    <section className="moviesCards">
-        {
-            movies.map(movie =>
-                <Movie
-                    key={movie.imdbID}
-                    movie={movie}
-                    onClick={() => onCardClick(movie.imdbID)}
-                />
-            )
-        }
-    </section>
+function Movies({movies, onCardClick}) {
+    return (
+        <section className="moviesCards">
+            {
+                movies.map(movie =>
+                    <Movie
+                        key={movie.imdbID}
+                        movie={movie}
+                        onClick={() => onCardClick(movie.imdbID)}
+                    />
+                )
+            }
+        </section>
+    );
+}
 
-function Movie({movie, onClick}){
+function Movie({movie, onClick}) {
     return (
         <div className="card movieCard" onClick={onClick}>
             <img

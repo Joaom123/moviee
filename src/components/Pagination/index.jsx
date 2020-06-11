@@ -2,15 +2,36 @@ import React, { Fragment } from "react";
 import "./pagination.css";
 
 function Pagination({totalResults, page, handleChangeOfPage}) {
-    const PageLink = (number) => {
+    if(totalResults === 0)
+        return null;
+
+    return (
+        <ul className="pagination">
+            <PreviousPage />
+            <PagesLinks />
+            <NextPage />
+        </ul>
+    );
+
+    function PreviousPage() {
         return (
-            <li className={page === number ? "active" : "waves-effect"} key={number}>
-                <a href="#!" onClick={(e) => handleChangeOfPage(e, number)}>{number}</a>
+            <li className={page === 1 ? "disabled" : "waves-effect"}>
+                <a href="#!" onClick={(e) => handleChangeOfPage(e, page - 1)}>
+                    <i className="material-icons">chevron_left</i></a>
             </li>
-        )
+        );
     }
 
-    const PagesLinks = () => {
+    function NextPage() {
+        return (
+            <li className={page === Math.floor(totalResults / 10) ? "disabled" : "waves-effect"}>
+                <a href="#!" onClick={(e) => handleChangeOfPage(e, page + 1)}>
+                    <i className="material-icons">chevron_right</i></a>
+            </li>
+        );
+    }
+
+    function PagesLinks() {
         const numberOfPages = Math.ceil(totalResults / 10);
         let pageElements = [];
 
@@ -77,22 +98,13 @@ function Pagination({totalResults, page, handleChangeOfPage}) {
         );
     }
 
-    if(totalResults === 0)
-        return null;
-
-    return (
-        <ul className="pagination">
-            <li className={page === 1 ? "disabled" : "waves-effect"}>
-                <a href="#!" onClick={(e) => handleChangeOfPage(e, page - 1)}>
-                    <i className="material-icons">chevron_left</i></a>
+    function PageLink(number) {
+        return (
+            <li className={page === number ? "active" : "waves-effect"} key={number}>
+                <a href="#!" onClick={(e) => handleChangeOfPage(e, number)}>{number}</a>
             </li>
-            <PagesLinks />
-            <li className={page === Math.floor(totalResults / 10) ? "disabled" : "waves-effect"}>
-                <a href="#!" onClick={(e) => handleChangeOfPage(e, page + 1)}>
-                    <i className="material-icons">chevron_right</i></a>
-            </li>
-        </ul>
-    );
+        )
+    }
 }
 
 export default Pagination;
