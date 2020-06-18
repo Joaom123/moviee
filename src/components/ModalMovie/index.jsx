@@ -62,15 +62,30 @@ function MovieBadges({movie}) {
 
     return (
         <div className="col s12 l6 modalMovie__badges">
-            <span className="modalMovie__badgePill">{Year}</span>
-            <span className="modalMovie__badgePill">{Rated}</span>
-            <span className="modalMovie__badgePill">{Runtime}</span>
+            <BadgePill info={Year} />
+            <BadgePill info={Rated} />
+            <BadgePill info={Runtime} />
         </div>
     );
 }
 
+function BadgePill({info}) {
+    if(info === "N/A")
+        return null;
+    return <span className="modalMovie__badgePill">{info}</span>;
+}
+
+const movieHasNotRating = (movie) => {
+    const {imdbRating, imdbVotes} = movie;
+
+    return imdbRating === "N/A" || imdbVotes === "N/A";
+}
+
 function MovieRating({movie}) {
     const {imdbRating, imdbVotes} = movie;
+
+    if (movieHasNotRating(movie))
+        return null;
 
     const ratingPercentagem = parseFloat(imdbRating)*10;
 
@@ -84,15 +99,14 @@ function MovieRating({movie}) {
 
 function MovieAwards({movie}) {
     const {Awards} = movie;
-
     const withoutAward = Awards === "N/A";
-
-    //TODO: Se tiver, exibe trofeu coloriodo com popover, se não,
+    const modifierWithoutAward = withoutAward ? "movieAwards__icon--withoutAward" : "";
+    const numberOfColumns = movieHasNotRating(movie) ? "s12" : "s6";
 
     return (
-        <div className="col s6 modalMovie__awards">
+        <div className={`col ${numberOfColumns} modalMovie__awards`}>
             <img
-                className={`movieAwards__icon ${withoutAward ? "movieAwards__icon--withoutAward" : ""}`}
+                className={`movieAwards__icon ${modifierWithoutAward}`}
                 src={trophyIcon}
                 alt="Trophy icon"
             />
@@ -103,6 +117,9 @@ function MovieAwards({movie}) {
 
 function MovieBody({movie}) {
     const {Plot} = movie;
+
+    if(Plot === "N/A")
+        return null;
 
     return (
         <div className="modalMovie__body">
