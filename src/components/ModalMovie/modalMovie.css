@@ -48,6 +48,21 @@
     margin-right: 0;
 }
 
+.modalMovie__awards {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.movieAwards__icon {
+    text-align: center;
+    max-width: 96px;
+}
+
+.movieAwards__icon--withoutAward {
+    filter: grayscale(100%);
+}
+
 @media screen and (max-width: 600px) {
     .modalMovie {
         max-width: 300px;

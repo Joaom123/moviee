@@ -1,7 +1,8 @@
 import React from "react";
 import Modal from "../Modal";
-import "./modalMovie.css"
 import {getMoviePosterOrDefaultPoster} from "../../services";
+import "./modalMovie.css";
+import trophyIcon from "../../assets/img/trophy.png";
 
 export default function ModalMovie({movie, toggleModal, onCloseModal}) {
     return (
@@ -22,7 +23,7 @@ function MoviePoster({movie}) {
             <img
                 className="w-100 h-100"
                 src={getMoviePosterOrDefaultPoster(movie)}
-                alt="Poster do filme"
+                alt="Movie poster"
             />
         </div>
     );
@@ -74,7 +75,7 @@ function MovieRating({movie}) {
     const ratingPercentagem = parseFloat(imdbRating)*10;
 
     return (
-        <div className="modalMovie__rating">
+        <div className="col s6 modalMovie__rating">
             <span>{imdbRating}</span>
             <span className="modalMovie__votes">{imdbVotes}</span>
         </div>
@@ -84,13 +85,18 @@ function MovieRating({movie}) {
 function MovieAwards({movie}) {
     const {Awards} = movie;
 
-    const hasAward = Awards !== "N/A";
+    const withoutAward = Awards === "N/A";
 
     //TODO: Se tiver, exibe trofeu coloriodo com popover, se não,
 
     return (
-        <div className="modalMovie__rating">
-            <span>{Awards}</span>
+        <div className="col s6 modalMovie__awards">
+            <img
+                className={`movieAwards__icon ${withoutAward ? "movieAwards__icon--withoutAward" : ""}`}
+                src={trophyIcon}
+                alt="Trophy icon"
+            />
+            <span>Awards</span>
         </div>
     );
 }
