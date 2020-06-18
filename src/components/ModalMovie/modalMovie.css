@@ -20,6 +20,10 @@
     font-weight: 300;
 }
 
+.modalMovie__genreAndBadges {
+    margin-bottom: 0;
+}
+
 .modalMovie__genre {
     margin: 0.75rem 0;
 }
