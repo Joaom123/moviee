@@ -22,13 +22,27 @@ class Initial extends Component {
 
     onCloseModal = () => this.setState({toggleModal: false});
 
-    isSearchValueEmpty = () => this.state.searchValue === "";
+    doesGetMoviesListIfValidSearchValue = () => {
+        if (this.isSearchValueValid())
+            this.getMoviesListAndSetMovies();
+    }
+
+    doesGetMoviesListWithTimeout = () => {
+        clearTimeout(this.timer);
+        this.timer = setTimeout(
+            () => this.doesGetMoviesListIfValidSearchValue(),
+            300
+        );
+    }
+
+    isSearchValueNotEmpty = () => this.state.searchValue !== "";
 
     isSearchValueLongerThan3Characters = () => this.state.searchValue.length >= 3;
 
-    getMoviesListBySearchValueAndPage = () => {
+    isSearchValueValid = () => this.isSearchValueNotEmpty() && this.isSearchValueLongerThan3Characters();
+
+    getMoviesListAndSetMovies = () => {
         const {searchValue, page} = this.state;
-        console.log(page);
         apiService
             .getMoviesList({searchValue, page})
             .then(response => {
@@ -36,13 +50,11 @@ class Initial extends Component {
 
                 if (Response === 'True') {
                     this.setState({
-                        page,
                         movies: Search,
                         totalResults
                     });
                 } else {
                     const {Error} = response.data;
-                    console.log(Error);
                     //TODO: Mensagem de erro
                 }
             })
@@ -52,11 +64,9 @@ class Initial extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-    }
-
-    makeGet = () => {
-        if (!this.isSearchValueEmpty() && this.isSearchValueLongerThan3Characters())
-            this.getMoviesListBySearchValueAndPage();
+        const {searchValue, page} = this.state;
+        if(searchValue !== prevState.searchValue || page !== prevState.page)
+            this.doesGetMoviesListWithTimeout();
     }
 
     handleChangeOfSearchValue(event) {
@@ -66,18 +76,11 @@ class Initial extends Component {
             return ;
 
         this.setState({searchValue});
-
-        clearTimeout(this.timer);
-        this.timer = setTimeout(() => this.makeGet(), 1000);
     }
 
     handleChangeOfPage(e, page) {
         e.preventDefault();
-
         this.setState({page});
-
-        clearTimeout(this.timer);
-        this.timer = setTimeout(() => this.makeGet(), 1000);
     }
 
     onCardClick(imdbId) {
