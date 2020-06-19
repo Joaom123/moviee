@@ -19,17 +19,17 @@ function Movies({movies, onCardClick}) {
 }
 
 function Movie({movie, onClick}) {
+    const {Title} = movie;
+
     return (
         <div className="card movieCard" onClick={onClick}>
             <img
                 className="movieCard__imagem"
                 src={getMoviePosterOrDefaultPoster(movie)}
-                alt=""
+                alt="Poster"
             />
             <div className="movieCard__info">
-                <span>{movie.Title}</span>
-                {/*<br/>*/}
-                {/*<span>{movie.Year}</span>*/}
+                <span>{Title}</span>
             </div>
         </div>
     );
