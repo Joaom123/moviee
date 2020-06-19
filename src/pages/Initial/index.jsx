@@ -15,44 +15,51 @@ class Initial extends Component {
             toggleModal: false
         };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.getMoviesBySearchValueAndPage = this.getMoviesBySearchValueAndPage.bind(this);
+        this.handleChangeOfSearchValue = this.handleChangeOfSearchValue.bind(this);
         this.handleChangeOfPage = this.handleChangeOfPage.bind(this);
-        this.onCloseModal = this.onCloseModal.bind(this);
+        this.onCardClick = this.onCardClick.bind(this);
     }
 
-    getMoviesBySearchValueAndPage({searchValue, page = 1}) {
-        apiService.getMoviesList({searchValue, page})
-        .then(response => {
-            if (response.data.Response === 'True') {
-                this.setState({
-                    page,
-                    movies: response.data.Search,
-                    totalResults: response.data.totalResults
-                });
-            } else {
-                //TODO: Mensagem de erro
-            }
-        })
-        .catch(error => {
-            console.log(error);
-        })
+    onCloseModal = () => this.setState({toggleModal: false});
+
+    isSearchValueEmpty = () => this.state.searchValue === "";
+
+    isSearchValueLongerThan3Characters = () => this.state.searchValue.length >= 3;
+
+    getMoviesListBySearchValueAndPage = () => {
+        const {searchValue, page} = this.state;
+        console.log(page);
+        apiService
+            .getMoviesList({searchValue, page})
+            .then(response => {
+                const {Response, Search, totalResults} = response.data;
+
+                if (Response === 'True') {
+                    this.setState({
+                        page,
+                        movies: Search,
+                        totalResults
+                    });
+                } else {
+                    const {Error} = response.data;
+                    console.log(Error);
+                    //TODO: Mensagem de erro
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
-    handleChangeOfPage(e, page) {
-        e.preventDefault();
-        let searchValue = this.state.searchValue;
-
-        if (searchValue === "")
-            return ;
-
-        if (page < 1)
-            return ;
-
-        this.getMoviesBySearchValueAndPage({searchValue, page});
+    componentDidUpdate(prevProps, prevState, snapshot) {
     }
 
-    handleChange(event) {
+    makeGet = () => {
+        if (!this.isSearchValueEmpty() && this.isSearchValueLongerThan3Characters())
+            this.getMoviesListBySearchValueAndPage();
+    }
+
+    handleChangeOfSearchValue(event) {
         let searchValue = event.target.value;
 
         if (searchValue === " ")
@@ -60,20 +67,29 @@ class Initial extends Component {
 
         this.setState({searchValue});
 
-        if(searchValue.length >= 3)
-            this.getMoviesBySearchValueAndPage({searchValue: searchValue.trim()});
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => this.makeGet(), 1000);
     }
 
-    onCardClick = (imdbId) =>
-        apiService.getMovieByImdbId({imdbId})
-        .then(response =>
-            this.setState({
-                movie: response.data,
-                toggleModal: true
-            })
-        );
+    handleChangeOfPage(e, page) {
+        e.preventDefault();
 
-    onCloseModal = () => this.setState({toggleModal: false});
+        this.setState({page});
+
+        clearTimeout(this.timer);
+        this.timer = setTimeout(() => this.makeGet(), 1000);
+    }
+
+    onCardClick(imdbId) {
+        apiService
+            .getMovieByImdbId({imdbId})
+            .then(response => {
+                this.setState({
+                    movie: response.data,
+                    toggleModal: true
+                });
+            });
+    }
 
     render() {
         const {searchValue, movies, totalResults, page, movie, toggleModal} = this.state;
@@ -82,7 +98,7 @@ class Initial extends Component {
             <main className="container">
                 <SearchForm
                     searchValue={searchValue}
-                    handleChange={this.handleChange}
+                    handleChange={this.handleChangeOfSearchValue}
                 />
                 <Movies
                     movies={movies}
