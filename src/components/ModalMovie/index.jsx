@@ -2,7 +2,7 @@ import React from "react";
 import Modal from "../Modal";
 import {getMoviePosterOrDefaultPoster} from "../../services";
 import "./modalMovie.css";
-import trophyIcon from "../../assets/img/trophy.png";
+import {trophyIcon, ratingIcon} from "../../assets";
 
 export default function ModalMovie({movie, toggleModal, onCloseModal}) {
     return (
@@ -90,9 +90,14 @@ function MovieRating({movie}) {
     const ratingPercentagem = parseFloat(imdbRating)*10;
 
     return (
-        <div className="col s6 modalMovie__rating">
-            <span>{imdbRating}</span>
-            <span className="modalMovie__votes">{imdbVotes}</span>
+        <div className="col s6 movieRating">
+            <img
+                className="movieRating__icon"
+                src={ratingIcon}
+                alt="Rating icon"
+            />
+            <span>Rating</span>
+            {/*<span className="modalMovie__votes">{`${imdbVotes} votes`}</span>*/}
         </div>
     );
 }
@@ -104,7 +109,7 @@ function MovieAwards({movie}) {
     const numberOfColumns = movieHasNotRating(movie) ? "s12" : "s6";
 
     return (
-        <div className={`col ${numberOfColumns} modalMovie__awards`}>
+        <div className={`col ${numberOfColumns} movieAwards`}>
             <img
                 className={`movieAwards__icon ${modifierWithoutAward}`}
                 src={trophyIcon}
