@@ -1,8 +1,6 @@
-import noPoster from "../assets/img/no-poster.jpg";
+import {noPoster} from "../assets";
 
 export const getMoviePosterOrDefaultPoster = (movie) => {
     const {Poster} = movie;
-    if (Poster === "N/A")
-        return noPoster;
-    return Poster;
+    return Poster === "N/A" ? noPoster : Poster;
 }
