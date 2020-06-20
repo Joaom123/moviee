@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ModalMovie, Movies, Pagination, SearchForm} from "../../components";
+import {ModalMovie, Movies, Pagination, SearchForm, Snackbar} from "../../components";
 import {apiService} from "../../services";
 
 class Initial extends Component {
@@ -12,7 +12,9 @@ class Initial extends Component {
             movies: [],
             movie: [],
             totalResults: 0,
-            toggleModal: false
+            toggleModal: false,
+            errorMessage: "",
+            isActive: false
         };
 
         this.handleChangeOfSearchValue = this.handleChangeOfSearchValue.bind(this);
@@ -31,7 +33,7 @@ class Initial extends Component {
         clearTimeout(this.timer);
         this.timer = setTimeout(
             () => this.doesGetMoviesListIfValidSearchValue(),
-            300
+            500
         );
     }
 
@@ -55,7 +57,10 @@ class Initial extends Component {
                     });
                 } else {
                     const {Error} = response.data;
-                    //TODO: Mensagem de erro
+                    this.setState({
+                        errorMessage: Error,
+                        isActive: true
+                    });
                 }
             })
             .catch(error => {
@@ -65,6 +70,7 @@ class Initial extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         const {searchValue, page} = this.state;
+
         if(searchValue !== prevState.searchValue || page !== prevState.page)
             this.doesGetMoviesListWithTimeout();
     }
@@ -95,7 +101,7 @@ class Initial extends Component {
     }
 
     render() {
-        const {searchValue, movies, totalResults, page, movie, toggleModal} = this.state;
+        const {searchValue, movies, totalResults, page, movie, toggleModal, errorMessage, isActive} = this.state;
 
         return (
             <main className="container">
@@ -116,6 +122,10 @@ class Initial extends Component {
                     toggleModal={toggleModal}
                     onCloseModal={this.onCloseModal}
                     movie={movie}
+                />
+                <Snackbar
+                    isActive={isActive}
+                    message={errorMessage}
                 />
             </main>
         );
