@@ -33,6 +33,7 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
+    justify-content: flex-end;
 }
 
 .modalMovie__badgePill {
@@ -73,7 +74,7 @@
     .modalMovie {
         height: 100%;
         width: 70%;
-        max-width: 700px;
+        max-width: 830px;
     }
 
     .modalMovie__header {
