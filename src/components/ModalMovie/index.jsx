@@ -1,19 +1,19 @@
 import React from "react";
-import Modal from "../Modal";
+import ModalContainer from "../ModalContainer";
 import {getMoviePosterOrDefaultPoster} from "../../services";
 import "./modalMovie.css";
 import {trophyIcon, ratingIcon} from "../../assets";
 
 export default function ModalMovie({movie, toggleModal, onCloseModal}) {
     return (
-        <Modal
+        <ModalContainer
             toggleModal={toggleModal}
             onCloseModal={onCloseModal}
             modalAdditionalClass="row modalMovie"
         >
             <MoviePoster movie={movie} />
             <MovieInfo movie={movie} />
-        </Modal>
+        </ModalContainer>
     );
 }
 

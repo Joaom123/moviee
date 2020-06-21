@@ -2,7 +2,7 @@ import React, { Component, } from "react";
 import M from "materialize-css";
 import "./modal.css";
 
-class Modal extends Component {
+class ModalContainer extends Component {
     constructor(props) {
         super(props);
 
@@ -81,4 +81,4 @@ class Modal extends Component {
     }
 }
 
-export default Modal;
+export default ModalContainer;

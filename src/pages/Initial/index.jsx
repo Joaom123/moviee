@@ -48,7 +48,7 @@ class Initial extends Component {
         apiService
             .getMoviesList({searchValue, page})
             .then(response => {
-                const {Response, Search, totalResults} = response.data;
+                const {Response, Search, totalResults, Error} = response.data;
 
                 if (Response === 'True') {
                     this.setState({
@@ -56,7 +56,6 @@ class Initial extends Component {
                         totalResults
                     });
                 } else {
-                    const {Error} = response.data;
                     this.setState({
                         errorMessage: Error,
                         isActive: true
