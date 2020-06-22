@@ -1,8 +1,8 @@
-import React from "react";
+import React, {Fragment} from "react";
 import ModalContainer from "../ModalContainer";
 import {getMoviePosterOrDefaultPoster} from "../../services";
 import "./modalMovie.css";
-import {trophyIcon, ratingIcon} from "../../assets";
+import {trophyIcon} from "../../assets";
 
 export default function ModalMovie({movie, toggleModal, onCloseModal}) {
     return (
@@ -11,9 +11,20 @@ export default function ModalMovie({movie, toggleModal, onCloseModal}) {
             onCloseModal={onCloseModal}
             modalAdditionalClass="row modalMovie"
         >
+            <ModalContent movie={movie} />
+        </ModalContainer>
+    );
+}
+
+function ModalContent({movie}) {
+    if(movie.length === 0)
+        return null;
+
+    return (
+        <Fragment>
             <MoviePoster movie={movie} />
             <MovieInfo movie={movie} />
-        </ModalContainer>
+        </Fragment>
     );
 }
 

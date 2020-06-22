@@ -10,7 +10,7 @@ function Movies({movies, onCardClick}) {
                     <Movie
                         key={movie.imdbID}
                         movie={movie}
-                        onClick={() => onCardClick(movie.imdbID)}
+                        onCardClick={onCardClick}
                     />
                 )
             }
@@ -18,8 +18,10 @@ function Movies({movies, onCardClick}) {
     );
 }
 
-function Movie({movie, onClick}) {
-    const {Title} = movie;
+function Movie({movie, onCardClick}) {
+    const {Title, imdbID} = movie;
+
+    const onClick = () => onCardClick(imdbID);
 
     return (
         <div className="card movieCard" onClick={onClick}>
