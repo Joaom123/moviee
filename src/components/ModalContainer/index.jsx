@@ -67,16 +67,16 @@ class ModalContainer extends Component {
         const {modalAdditionalClass = "", children} = this.props;
 
         return (
-            <div
-                ref={this.ref}
-                id="modal"
+            <section
                 className={`modal ${modalAdditionalClass}`}
+                id="modal"
+                ref={this.ref}
                 onMouseMove={this.onMouseMoveHandle}
                 onMouseOut={this.onMouseOutHandle}
                 style={this.style(x, y)}
             >
                 {children}
-            </div>
+            </section>
         );
     }
 }
