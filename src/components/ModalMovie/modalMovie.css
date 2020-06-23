@@ -33,7 +33,6 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: flex-end;
 }
 
 .modalMovie__badgePill {
@@ -113,5 +112,6 @@
     .modalMovie__badges {
         text-align: right;
         padding-left: 0 !important;
+        justify-content: flex-end;
     }
 }
