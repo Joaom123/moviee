@@ -103,6 +103,7 @@ function MovieRating({movie}) {
         <div className="col s6 movieRating">
             <RatingIcon ratingPercentage={ratingPercentage}/>
             <span>{`${imdbRating}/10`}</span>
+
         </div>
     );
 }
@@ -120,6 +121,7 @@ function MovieAwards({movie}) {
                     src={trophyIcon}
                     alt="Trophy icon"
                 />
+                <span>{Awards}</span>
         </div>
     );
 }

@@ -16,7 +16,7 @@ function SearchForm({searchValue, handleChange}) {
                             value={searchValue}
                             onChange={handleChange}
                         />
-                        <label htmlFor="movieName">Nome do Filme</label>
+                        <label htmlFor="movieName">Title</label>
                     </div>
                 </div>
             </form>
