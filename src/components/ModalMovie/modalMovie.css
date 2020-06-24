@@ -64,6 +64,11 @@
     filter: grayscale(100%);
 }
 
+.movieAwards__listOfMovieAwards {
+    margin: 0;
+    text-align: center;
+}
+
 .movieRating {
     display: flex;
     flex-flow: column;

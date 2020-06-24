@@ -103,7 +103,7 @@ function MovieRating({movie}) {
         <div className="col s6 movieRating">
             <RatingIcon ratingPercentage={ratingPercentage}/>
             <span>{`${imdbRating}/10`}</span>
-
+            <span>{`${imdbVotes} votes`}</span>
         </div>
     );
 }
@@ -116,13 +116,31 @@ function MovieAwards({movie}) {
 
     return (
         <div className={`col ${numberOfColumns} movieAwards`}>
-                <img
-                    className={`movieAwards__icon ${modifierWithoutAward}`}
-                    src={trophyIcon}
-                    alt="Trophy icon"
-                />
-                <span>{Awards}</span>
+            <img
+                className={`movieAwards__icon ${modifierWithoutAward}`}
+                src={trophyIcon}
+                alt="Trophy icon"
+            />
+            <NameMovieAwards withoutAward={withoutAward} awards={Awards} />
         </div>
+    );
+}
+
+function NameMovieAwards({withoutAward, awards}) {
+    const separatedAwards = awards.split(".");
+
+    if(withoutAward)
+        return <span>No Award</span>;
+    return <ListOfMovieAwards separatedAwards={separatedAwards} />
+}
+
+function ListOfMovieAwards({separatedAwards}) {
+    return (
+        <ul className="movieAwards__listOfMovieAwards">
+            {
+                separatedAwards.map((award, key) => <li key={key}>{award}</li>)
+            }
+        </ul>
     );
 }
 
