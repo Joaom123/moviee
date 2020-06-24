@@ -17,7 +17,7 @@ export default function ModalMovie({movie, toggleModal, onCloseModal}) {
 }
 
 function ModalContent({movie}) {
-    if(movie.length === 0)
+    if(Object.keys(movie).length === 0)
         return null;
 
     return (
@@ -93,17 +93,16 @@ const movieHasNotRating = (movie) => {
 }
 
 function MovieRating({movie}) {
-    const {imdbRating, imdbVotes} = movie;
-
     if (movieHasNotRating(movie))
         return null;
 
+    const {imdbRating, imdbVotes} = movie;
     const ratingPercentage = parseFloat(imdbRating)/10;
 
     return (
         <div className="col s6 movieRating">
             <RatingIcon ratingPercentage={ratingPercentage}/>
-            <span>Rating</span>
+            <span>{`${imdbRating}/10`}</span>
         </div>
     );
 }
@@ -116,12 +115,11 @@ function MovieAwards({movie}) {
 
     return (
         <div className={`col ${numberOfColumns} movieAwards`}>
-            <img
-                className={`movieAwards__icon ${modifierWithoutAward}`}
-                src={trophyIcon}
-                alt="Trophy icon"
-            />
-            <span>Awards</span>
+                <img
+                    className={`movieAwards__icon ${modifierWithoutAward}`}
+                    src={trophyIcon}
+                    alt="Trophy icon"
+                />
         </div>
     );
 }
@@ -150,8 +148,12 @@ function RatingIcon({ratingPercentage}) {
         >
             <defs>
                 <linearGradient id="progress" x1="0" y1="1" x2="0" y2="0">
-                    <stop id="stop1" offset={ratingPercentage} stopColor="red"/>
-                    <stop id="stop2" offset={ratingPercentage} stopColor="pink"/>
+                    <stop id="stop1" offset={ratingPercentage} stopColor="red">
+                        <animate attributeName="offset" values={`0; ${ratingPercentage}`} dur="1s"/>
+                    </stop>
+                    <stop id="stop2" offset={ratingPercentage} stopColor="pink">
+                        <animate attributeName="offset" values={`0; ${ratingPercentage}`} dur="1s"/>
+                    </stop>
                 </linearGradient>
             </defs>
             <path
