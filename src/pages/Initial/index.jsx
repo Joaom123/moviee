@@ -10,7 +10,7 @@ class Initial extends Component {
             searchValue: "",
             page: 1,
             movies: [],
-            movie: [],
+            movie: {},
             totalResults: 0,
             toggleModal: false,
             errorMessage: "",
@@ -22,7 +22,7 @@ class Initial extends Component {
         this.onCardClick = this.onCardClick.bind(this);
     }
 
-    onCloseModal = () => this.setState({toggleModal: false});
+    onCloseModal = () => this.setState({toggleModal: false, movie: {}});
 
     doesGetMoviesListIfValidSearchValue = () => {
         if (this.isSearchValueValid())
