@@ -33,7 +33,7 @@ class Initial extends Component {
         clearTimeout(this.timer);
         this.timer = setTimeout(
             () => this.doesGetMoviesListIfValidSearchValue(),
-            500
+            800
         );
     }
 
@@ -58,7 +58,10 @@ class Initial extends Component {
                 } else {
                     this.setState({
                         errorMessage: Error,
-                        isActive: true
+                        isActive: true,
+                        movies: [],
+                        page: 1,
+                        totalResults: 0
                     });
                 }
             })
@@ -68,10 +71,18 @@ class Initial extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        const {searchValue, page} = this.state;
+        const {searchValue, page, isActive} = this.state;
 
         if(searchValue !== prevState.searchValue || page !== prevState.page)
             this.doesGetMoviesListWithTimeout();
+
+        if(isActive === true && isActive !== prevState.isActive) {
+            setTimeout(
+                () => this.setState({isActive: false}),
+                3000
+            );
+
+        }
     }
 
     handleChangeOfSearchValue(event) {
