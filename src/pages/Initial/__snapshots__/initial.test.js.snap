@@ -19,6 +19,7 @@ exports[`snapshot  1`] = `
           >
             <input
               class="validate"
+              data-testid="searchMovieInput"
               id="movieName"
               name="movieName"
               type="text"

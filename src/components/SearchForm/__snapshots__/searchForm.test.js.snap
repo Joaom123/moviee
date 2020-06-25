@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm snapshot 1`] = `
+<DocumentFragment>
+  <section
+    class="row"
+  >
+    <form
+      class="col s12"
+    >
+      <div
+        class="row"
+      >
+        <div
+          class="input-field col s12 m6 offset-m3"
+        >
+          <input
+            class="validate"
+            data-testid="searchMovieInput"
+            id="movieName"
+            name="movieName"
+            type="text"
+            value=""
+          />
+          <label
+            for="movieName"
+          >
+            Title
+          </label>
+        </div>
+      </div>
+    </form>
+  </section>
+</DocumentFragment>
+`;

@@ -15,6 +15,7 @@ function SearchForm({searchValue, handleChange}) {
                             type="text"
                             value={searchValue}
                             onChange={handleChange}
+                            data-testid="searchMovieInput"
                         />
                         <label htmlFor="movieName">Title</label>
                     </div>
