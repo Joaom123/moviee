@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination snapshot when total results > 0 1`] = `
+<DocumentFragment>
+  <ul
+    class="pagination"
+  >
+    <li
+      class="waves-effect"
+    >
+      <a
+        href="#!"
+      >
+        <i
+          class="material-icons"
+        >
+          chevron_left
+        </i>
+      </a>
+    </li>
+    <li
+      class="waves-effect"
+    >
+      <a
+        href="#!"
+      >
+        1
+      </a>
+    </li>
+    <li
+      class="waves-effect"
+    >
+      <a
+        href="#!"
+      >
+        2
+      </a>
+    </li>
+    <li
+      class="waves-effect"
+    >
+      <a
+        href="#!"
+      >
+        3
+      </a>
+    </li>
+    <li
+      class="waves-effect"
+    >
+      <a
+        href="#!"
+      >
+        4
+      </a>
+    </li>
+    <li
+      class="waves-effect"
+    >
+      <a
+        href="#!"
+      >
+        5
+      </a>
+    </li>
+    <span>
+      ...
+    </span>
+    <li
+      class="waves-effect"
+    >
+      <a
+        href="#!"
+      >
+        34
+      </a>
+    </li>
+    <li
+      class="waves-effect"
+    >
+      <a
+        href="#!"
+      >
+        <i
+          class="material-icons"
+        >
+          chevron_right
+        </i>
+      </a>
+    </li>
+  </ul>
+</DocumentFragment>
+`;
+
+exports[`Pagination snapshot when total results equals 0 1`] = `<DocumentFragment />`;
