@@ -10,12 +10,12 @@ Site em produção [Movieet](https://movieet.netlify.app/)
 * Biblioteca Frontend: [React](https://reactjs.org/)
 * Design: [IMDb design concept](https://dribbble.com/shots/2285048-IMDb-design-concept-movie-details?utm_source=Clipboard_Shot&utm_campaign=georgev&utm_content=IMDb%20design%20concept%20-%20movie%20details&utm_medium=Social_Share)
 
-## Progresso  ![75%](https://progress-bar.dev/75/)
+## Progresso  ![88%](https://progress-bar.dev/88/)
 - [x] Conexão com OMDb API
 - [x] Cards responsíveis
 - [x] Pesquisa de filmes após terceiro dígito
 - [x] Paginação
 - [x] Utilização do materializecss
 - [x] Modal com animação
-- [ ] Modal com informações de um filme 
+- [x] Modal com informações de um filme 
 - [ ] Acessibilidade
