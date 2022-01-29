@@ -1,5 +1,5 @@
 # Movieet
-Site em produção [Movieet](https://movieet.netlify.app/)
+Demo: [Movieet](https://movieet.netlify.app/)
 
 ## O que é o Movieet?
 É um buscador de filmes, além disso, exibe informações sobre os mesmos.
